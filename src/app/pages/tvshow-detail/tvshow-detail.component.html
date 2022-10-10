@@ -1,0 +1,118 @@
+<!-- <pre> {{movieDetail | json}}</pre> -->
+<ng-container *ngIf="tvshowDetails">
+    <app-slider *ngIf="tvShowBanner" [items]="[tvShowBanner]" [isBanner]="true"></app-slider>
+    <p-tabView>
+        <p-tabPanel header="Overview">
+            <div class="grid">
+                <div class="col-12 md:col-3 lg:col-3">
+                    <img class="poster" [src]="imagesSizes.medium + tvshowDetails.poster_path" [alt]="tvshowDetails.name">
+                </div>
+
+                <div class="col-12 md:col-9 lg:col-9">
+                    <h2> Overview </h2>
+                    <p class="overview">{{tvshowDetails.overview}}</p>
+                    <div class="stat">
+                        <div class="label"> Release:</div>
+                        <div class="value">
+                            {{tvshowDetails.release_date | date : 'mediumDate'}}
+                        </div>
+                    </div>
+                    <div class="stat">
+                        <div class="label"> Language:</div>
+                        <div class="value">
+                            {{tvshowDetails.original_language | uppercase}}
+                        </div>
+                    </div>
+                    <div *ngIf="tvshowDetails.runtime" class="stat">
+                        <div class="label"> Duration:</div>
+                        <div class="value">
+                            {{tvshowDetails.runtime}} min
+                        </div>
+                    </div>
+                    <div *ngIf="tvshowDetails.revenue" class="stat">
+                        <div class="label"> Revenue:</div>
+                        <div class="value">
+                            {{tvshowDetails.revenue | currency: 'USD'}}
+                        </div>
+                    </div>
+                    <div class="stat">
+                        <div class="label"> Status:</div>
+                        <div class="value">
+                            {{tvshowDetails.status}}
+                        </div>
+                    </div>
+                    <div class="stat">
+                        <div class="label"> Genres:</div>
+                        <div class="value">
+                            <span *ngFor="let genre of tvshowDetails.genres; let i = index">
+                                {{genre.name}} <span *ngIf="i != tvshowDetails.genres.length - 1">-</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+    
+            </div>
+        </p-tabPanel>
+
+        <p-tabPanel header="Videos">
+            <div class="grid">
+                <!-- <pre> {{movieVideos | json}}</pre> -->
+                <ng-container *ngFor="let video of tvshowVideos">
+                    <div class="col-12 md:col-4 lg:col-4">
+                        <app-video-embed [key]="video.key" [site]="video.site"></app-video-embed>
+                    </div>
+                </ng-container>
+            </div>
+
+            
+        </p-tabPanel>
+
+        <p-tabPanel header="Photos">
+            <div class="grid">
+                <!-- <pre> {{movieVideos | json}}</pre> -->
+                <ng-container *ngFor="let image of tvshowImages?.backdrops">
+                    <div class="col-12 md:col-4 lg:col-4">
+                        <p-image 
+                        [src]="imagesSizes.large + image.file_path"
+                        alt="Image"
+                        width="100%"
+                        [preview]="true"
+                        >
+                        </p-image>
+                    </div>
+                </ng-container>
+            </div>
+           
+        </p-tabPanel>
+    </p-tabView>
+
+    <div class="container">
+        <h2> Cast </h2>
+        <p-carousel *ngIf="tvshowCredits" [value]="tvshowCredits.cast" [numVisible]="5">
+            <ng-template let-actor pTemplate="item">
+                <div class="actor">
+                    <img *ngIf="actor.profile_path" [src]="imagesSizes.medium + actor.profile_path" alt="">
+                    <span>{{actor.name}}</span>
+                    <p-messages *ngIf="!actor.profile_path" severity="error">
+                        <ng-template pTemplate>
+                            <div class="ml-2">Image not available for this cast member.</div>
+                        </ng-template>
+                    </p-messages>
+                </div>
+            </ng-template>
+        </p-carousel>
+    </div>
+
+    
+</ng-container>
+
+
+<div class="container">
+    <h2> Similar Tv Shows </h2>
+    <div class="grid">
+        <div class="col-12 md:col-3 lg:col-3" *ngFor="let tvshow of similarTvshows">
+            <app-item [itemData]="tvshow"></app-item>
+        </div>
+    </div>
+</div>
+

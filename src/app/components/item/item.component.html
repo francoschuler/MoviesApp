@@ -1,0 +1,12 @@
+<ng-container *ngIf="itemData">
+    <a class="item" [routerLink]="itemData.route_path">
+        <div class="item-rating">
+            <i class="app-icon">star</i>
+            <span>{{itemData.vote_average}}</span>/10
+        </div>
+        <div class="item-image">
+            <img [src]="imagesSizes.large + itemData.backdrop_path" [alt]="itemData.title">
+        </div>
+        <div class="item-title"> {{ itemData.title }} </div>
+    </a>
+</ng-container>
