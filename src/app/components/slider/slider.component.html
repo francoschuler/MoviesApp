@@ -20,11 +20,11 @@
                 </div>
 
                 <div class="desc mt-6" *ngIf="mobile.matches">
-                    {{item.overview}}
+                    {{item.overview | slice:0:250}}...
                 </div>
 
-                <ng-container *ngIf="!mobile.matches">
-                    <button class="desc-button" (click)="showDialog()" icon="pi pi-external-link" label="Show"> Show overview </button>
+                <ng-container>
+                    <button class="desc-button" (click)="showDialog()" icon="pi pi-external-link" label="Show"> See more </button>
                     <p-dialog header="Overview" [(visible)]="displayDialog" [breakpoints]="{'960px': '75vw'}" [style]="{width: '50vw'}"
                     [draggable]="false" [resizable]="false">
                     <p>{{item.overview}}</p>
