@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MediaMatcher } from '@angular/cdk/layout'
 
 @Component({
   selector: 'app-header',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  mobile!: MediaQueryList;
+  isMobile: boolean = false;
+
+  constructor(private media: MediaMatcher) { }
 
   ngOnInit(): void {
+    this.mobile = this.media.matchMedia('(min-width: 490px)');
+    this.mobile.addEventListener('change', this.myListener);
   }
+
+  myListener() {
+    console.log(this.mobile.matches ? 'mobile':'desktop');
+  }
+
 
 }

@@ -27,12 +27,26 @@ header {
             padding: 0;
             margin: 0;
             list-style: none;
+            font-weight: bold;
             li {
                 display: inline;
                 margin-right: 15px;
             }
         }
         
+    }
+}
+
+.navbar-links-mobile {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-weight: bold;
+    padding: 0;
+
+    li {
+        padding: .5rem;
     }
 }
 

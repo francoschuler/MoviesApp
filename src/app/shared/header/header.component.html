@@ -5,7 +5,8 @@
             <h1> Movies<span>App</span></h1>
         </a>
 
-        <ul class="navbar-links">
+
+        <ul class="navbar-links" *ngIf="mobile.matches">
             <li><a routerLink="/">Home</a></li>
             <li><a routerLink="/movies">Movies</a></li>
             <li><a routerLink="/tvshows">TV Shows</a></li>
@@ -13,5 +14,12 @@
         </ul>
 
     </nav>
+
+    <ul class="navbar-links-mobile" *ngIf="!mobile.matches">
+        <li><a routerLink="/">Home</a></li>
+        <li><a routerLink="/movies">Movies</a></li>
+        <li><a routerLink="/tvshows">TV Shows</a></li>
+        <li><a routerLink="/genres">Genres</a></li>
+    </ul>
 
 </header>

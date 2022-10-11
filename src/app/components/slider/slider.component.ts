@@ -1,4 +1,5 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import { MediaMatcher } from '@angular/cdk/layout';
 import { Component, Input, OnInit } from '@angular/core';
 import { IMAGES_SIZES } from 'src/app/constants/images-sizes';
 import { Item } from 'src/app/models/item';
@@ -21,15 +22,32 @@ export class SliderComponent implements OnInit {
   @Input() items: Item[] = [];
   @Input() isBanner: boolean = false;
 
+  displayDialog: boolean = false;
+
   imagesSizes = IMAGES_SIZES;
 
   currentSlideIndex: number = 0;
 
+  mobile!: MediaQueryList;
+
+  constructor(private media: MediaMatcher) { }
+
+
   ngOnInit(): void {
+
+    this.mobile = this.media.matchMedia('(min-width: 490px)');
+    this.mobile.addEventListener('change', this.myListener);
+
     if(!this.isBanner) {
       setInterval( () => {
         this.currentSlideIndex = ++this.currentSlideIndex % this.items.length;
       }, 5000)
     }
   }
+
+  myListener() {
+    console.log(this.mobile.matches ? 'mobile':'desktop');
+  }
+
+  showDialog(){ this.displayDialog = true }
 }

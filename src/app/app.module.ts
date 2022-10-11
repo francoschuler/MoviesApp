@@ -22,6 +22,7 @@ import { MessagesModule } from 'primeng/messages';
 import { MessageModule } from 'primeng/message';
 import { GenresComponent } from './pages/genres/genres.component';
 import { InputTextModule } from 'primeng/inputtext';
+import { DialogModule } from 'primeng/dialog';
 import { TvshowsComponent } from './pages/tvshows/tvshows.component';
 import { TvshowDetailComponent } from './pages/tvshow-detail/tvshow-detail.component';
 
@@ -52,7 +53,8 @@ import { TvshowDetailComponent } from './pages/tvshow-detail/tvshow-detail.compo
     CarouselModule,
     MessageModule,
     MessagesModule,
-    InputTextModule
+    InputTextModule,
+    DialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
