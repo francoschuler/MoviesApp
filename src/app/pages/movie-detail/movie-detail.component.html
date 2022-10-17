@@ -88,7 +88,9 @@
 
     <div class="container">
         <h2> Cast </h2>
-        <p-carousel *ngIf="movieCredits" [value]="movieCredits.cast" [numVisible]="5" [responsiveOptions]="responsiveOptions">
+        <p-carousel *ngIf="movieCredits" [value]="movieCredits.cast"
+         [numVisible]="5" [responsiveOptions]="responsiveOptions"
+         [circular]="true" [showIndicators]="false">
             <ng-template let-actor pTemplate="item">
                 <div class="actor">
                     <img *ngIf="actor.profile_path" [src]="imagesSizes.medium + actor.profile_path" alt="">
