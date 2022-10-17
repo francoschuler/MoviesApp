@@ -89,16 +89,17 @@
     <div class="container">
         <h2> Cast </h2>
         <p-carousel *ngIf="tvshowCredits" [value]="tvshowCredits.cast" [numVisible]="5"
-        [responsiveOptions]="responsiveOptions" [circular]="true" [showIndicators]="false">
+        [responsiveOptions]="responsiveOptions" [circular]="true">
             <ng-template let-actor pTemplate="item">
                 <div class="actor">
                     <img *ngIf="actor.profile_path" [src]="imagesSizes.medium + actor.profile_path" alt="">
+                    <img *ngIf="!actor.profile_path" src="./assets/images/default-cast.png" alt="">
                     <span>{{actor.name}}</span>
-                    <p-messages *ngIf="!actor.profile_path" severity="error">
+                    <!-- <p-messages *ngIf="!actor.profile_path" severity="error">
                         <ng-template pTemplate>
                             <div class="ml-2">Image not available for this cast member.</div>
                         </ng-template>
-                    </p-messages>
+                    </p-messages> -->
                 </div>
             </ng-template>
         </p-carousel>

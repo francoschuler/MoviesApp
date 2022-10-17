@@ -37,11 +37,18 @@
         color: $primaryColor;
     }
 }
-
 .actor {
     padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    height: 100%;
     img {
+        height: 100%;
         width: 100%;
+        object-fit: cover;
     }
     span {
         display: block;
@@ -50,4 +57,3 @@
         margin: 10px 0;
     }
 }
-
