@@ -111,7 +111,7 @@
     <h2> Similar Tv Shows </h2>
     <div class="grid">
         <div class="col-12 md:col-3 lg:col-3" *ngFor="let tvshow of similarTvshows">
-            <app-item [itemData]="tvshow"></app-item>
+            <app-item (click)="navigateSameUrl(tvshow.id)" [itemData]="tvshow"></app-item>
         </div>
     </div>
 </div>

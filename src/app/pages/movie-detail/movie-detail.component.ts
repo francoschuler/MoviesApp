@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs';
 import { IMAGES_SIZES } from 'src/app/constants/images-sizes';
 import { Movie, MovieCredits, MovieImages, MovieVideo } from 'src/app/models/movie';
@@ -20,7 +20,30 @@ export class MovieDetailComponent implements OnInit, OnDestroy {
 
   imagesSizes = IMAGES_SIZES;
 
-  constructor(private route: ActivatedRoute, private moviesService: MoviesService) { }
+  responsiveOptions = [
+    {
+        breakpoint: '1024px',
+        numVisible: 3,
+        numScroll: 3
+    },
+    {
+        breakpoint: '768px',
+        numVisible: 2,
+        numScroll: 2
+    },
+    {
+        breakpoint: '560px',
+        numVisible: 1,
+        numScroll: 1
+    }
+  ];
+
+  constructor(private route: ActivatedRoute, private moviesService: MoviesService, private router: Router) { 
+
+    this.router.routeReuseStrategy.shouldReuseRoute = () => {
+      return false;
+    };
+  }
 
   ngOnInit(): void {
     this.route.params.pipe(first()).subscribe( ({id}) => {
@@ -80,6 +103,11 @@ export class MovieDetailComponent implements OnInit, OnDestroy {
     }, (error:any) => {
       console.log(error);
     });
+  }
+
+
+  navigateSameUrl(id: number){
+    this.router.navigate(['movie-detail', String(id)])
   }
 
 }

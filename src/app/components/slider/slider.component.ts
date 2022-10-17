@@ -36,6 +36,7 @@ export class SliderComponent implements OnInit {
   ngOnInit(): void {
 
     this.mobile = this.media.matchMedia('(min-width: 490px)');
+    
     this.mobile.addEventListener('change', this.myListener);
 
     if(!this.isBanner) {
@@ -46,7 +47,6 @@ export class SliderComponent implements OnInit {
   }
 
   myListener() {
-    console.log(this.mobile.matches ? 'mobile':'desktop');
   }
 
   showDialog(){ this.displayDialog = true }

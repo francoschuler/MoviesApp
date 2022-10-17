@@ -7,6 +7,8 @@
     border-radius: 5px;
     background-color: $bgColorLight;
     border: 1px solid $ligthGrey;
+    transition: .3s;
+    margin: .5rem;
 
     &-image {
         img {
@@ -36,7 +38,14 @@
         height: 30px;
         justify-content: space-around;
     }
+
+    &:hover {
+        transform: scale(.95);
+        transition: .3s;
+    }
 }
+
+
 
 .app-icon {
     margin-right: 5px;

@@ -88,16 +88,18 @@
 
     <div class="container">
         <h2> Cast </h2>
-        <p-carousel *ngIf="movieCredits" [value]="movieCredits.cast" [numVisible]="5">
+        <p-carousel *ngIf="movieCredits" [value]="movieCredits.cast" [numVisible]="5" [responsiveOptions]="responsiveOptions">
             <ng-template let-actor pTemplate="item">
                 <div class="actor">
                     <img *ngIf="actor.profile_path" [src]="imagesSizes.medium + actor.profile_path" alt="">
                     <span>{{actor.name}}</span>
+
                     <p-messages *ngIf="!actor.profile_path" severity="error">
                         <ng-template pTemplate>
                             <div class="ml-2">Image not available for this cast member.</div>
                         </ng-template>
                     </p-messages>
+
                 </div>
             </ng-template>
         </p-carousel>
@@ -111,7 +113,7 @@
     <h2> Similar Movies </h2>
     <div class="grid">
         <div class="col-12 md:col-3 lg:col-3" *ngFor="let movie of similarMovies">
-            <app-item [itemData]="movie"></app-item>
+            <app-item (click)="navigateSameUrl(movie.id)" [itemData]="movie"></app-item>
         </div>
     </div>
 </div>

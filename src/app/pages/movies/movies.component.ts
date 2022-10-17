@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { take } from 'rxjs';
 import { Item } from 'src/app/models/item';
 import { mapMovieToItem, Movie } from 'src/app/models/movie';
@@ -17,7 +17,9 @@ export class MoviesComponent implements OnInit {
   searchValue: string | null = null;
 
   constructor(private moviesService: MoviesService,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private router: Router) {
+               }
 
   ngOnInit(): void {
     this.route.params.pipe(take(1)).subscribe( (params) => {
@@ -62,5 +64,6 @@ export class MoviesComponent implements OnInit {
       this.getPagedMovies(1, this.searchValue);
     }
   }
+
 
 }

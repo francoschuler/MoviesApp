@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs';
 import { IMAGES_SIZES } from 'src/app/constants/images-sizes';
 import { Item } from 'src/app/models/item';
@@ -22,7 +22,12 @@ export class TvshowDetailComponent implements OnInit {
 
   imagesSizes = IMAGES_SIZES;
 
-  constructor(private route: ActivatedRoute, private tvshowsService: TvshowsService) { }
+  constructor(private route: ActivatedRoute, private tvshowsService: TvshowsService, private router: Router) { 
+
+    this.router.routeReuseStrategy.shouldReuseRoute = () => {
+      return false;
+    };
+  }
 
   ngOnInit(): void {
     this.route.params.pipe(first()).subscribe( ({id}) => {
@@ -79,6 +84,10 @@ export class TvshowDetailComponent implements OnInit {
     }, (error:any) => {
       console.log(error);
     });
+  }
+
+  navigateSameUrl(id: number){
+    this.router.navigate(['movie-detail', String(id)])
   }
 
 }
