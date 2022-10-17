@@ -35,7 +35,7 @@ export class SliderComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.mobile = this.media.matchMedia('(min-width: 490px)');
+    this.mobile = this.media.matchMedia('(min-width: 700px)');
     
     this.mobile.addEventListener('change', this.myListener);
 

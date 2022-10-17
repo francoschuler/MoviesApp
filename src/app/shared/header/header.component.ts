@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit {
   constructor(private media: MediaMatcher) { }
 
   ngOnInit(): void {
-    this.mobile = this.media.matchMedia('(min-width: 490px)');
+    this.mobile = this.media.matchMedia('(min-width: 800px)');
     this.mobile.addEventListener('change', this.myListener);
   }
 
