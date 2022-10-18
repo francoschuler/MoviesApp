@@ -7,16 +7,16 @@
 
 
         <ul class="navbar-links" *ngIf="mobile.matches">
-            <li><a routerLink="/">Home</a></li>
-            <li><a routerLink="/movies">Movies</a></li>
-            <li><a routerLink="/tvshows">TV Shows</a></li>
-            <li><a routerLink="/genres">Genres</a></li>
+            <li><a routerLink="/home" routerLinkActive="active">Home</a></li>
+            <li><a routerLink="/movies" routerLinkActive="active">Movies</a></li>
+            <li><a routerLink="/tvshows" routerLinkActive="active">TV Shows</a></li>
+            <li><a routerLink="/genres" routerLinkActive="active">Genres</a></li>
         </ul>
 
     </nav>
 
     <ul class="navbar-links-mobile" *ngIf="!mobile.matches">
-        <li><a routerLink="/">Home</a></li>
+        <li><a routerLink="/home">Home</a></li>
         <li><a routerLink="/movies">Movies</a></li>
         <li><a routerLink="/tvshows">TV Shows</a></li>
         <li><a routerLink="/genres">Genres</a></li>

@@ -5,8 +5,8 @@
             <span>{{itemData.vote_average}}</span>/10
         </div>
         <div class="item-image">
-            <img *ngIf="itemData.backdrop_path" [src]="imagesSizes.large + itemData.backdrop_path" [alt]="itemData.title">
-            <img *ngIf="!itemData.backdrop_path" src="./assets/images/film.jpg">
+            <img loading="lazy" *ngIf="itemData.backdrop_path" [src]="imagesSizes.large + itemData.backdrop_path" [alt]="itemData.title">
+            <img loading="lazy" *ngIf="!itemData.backdrop_path" src="./assets/images/film.jpg">
         </div>
         <div class="item-title"> {{ itemData.title }} </div>
     </a>

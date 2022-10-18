@@ -37,23 +37,23 @@ header {
 
             li a {
                 transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
-                padding: .5rem .5rem;
+                padding: .4rem .4rem;
                 border-radius: 5px;
             }
 
             li a:hover {
                 box-shadow: inset 100px 0 0 0 $white;
-                color: $bgColorLight !important;
+                color: $bgColorLight;
             }
 
 
         }
-
-
-
-
-        
     }
+}
+
+.active {
+    box-shadow: inset 100px 0 0 0 $white;
+    color: $bgColorLight !important;
 }
 
 .navbar-links-mobile {

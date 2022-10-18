@@ -8,7 +8,9 @@ import { TvshowDetailComponent } from './pages/tvshow-detail/tvshow-detail.compo
 import { TvshowsComponent } from './pages/tvshows/tvshows.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', redirectTo: 'home', pathMatch: 'full'},
+  { path: 'home', component: HomeComponent },
+  
   { path: 'movies', component: MoviesComponent },
   { path: 'movies/genres/:genreId', component: MoviesComponent },
   { path: 'movie-detail/:id', component: MovieDetailComponent },
@@ -17,7 +19,7 @@ const routes: Routes = [
   { path: 'tvshows/genres/:genreId', component: TvshowsComponent },
   { path: 'tvshow-detail/:id', component: TvshowDetailComponent },
   { path: 'genres', component: GenresComponent },
-  { path: '**', redirectTo: ''}
+  { path: '**', redirectTo: 'home'}
 ];
 
 @NgModule({

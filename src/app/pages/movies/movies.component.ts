@@ -35,7 +35,9 @@ export class MoviesComponent implements OnInit {
 
   getPagedMovies(page: number, searchValue?: string) {
     this.moviesService.searchMovies(page, searchValue)
-    .subscribe((movies) => {      
+    .subscribe((movies) => {
+      console.log('paged movies', movies);
+      
       this.movies = movies.map((movie) => mapMovieToItem(movie));
     });
   }
