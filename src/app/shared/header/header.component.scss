@@ -2,8 +2,8 @@
 
 header {
 
-    transition: all .5s ease-in-out;
 
+    transition: 1s ease-in-out all;
     .navbar {
         display: flex;
         align-items: center;
@@ -13,17 +13,6 @@ header {
         background-color: $bgColorLight;
         margin: 0;
         border-bottom: 1px solid rgba(255, 255, 255, .1);
-
-        
-        &-logo {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-            img {
-                width: 35px;
-            }
-        }
-
         
         &-links {
             display: block;
@@ -64,6 +53,15 @@ header {
     }
 }
 
+.navbar-logo {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    img {
+        width: 35px;
+    }
+}
+
 .active {
     box-shadow: inset 100px 0 0 0 $white;
     color: $bgColorLight !important;
@@ -88,9 +86,13 @@ span {
 }
 
 .sticky {
-    position: fixed;
+
+    transition: 1s ease-in all;
+    position: sticky;
     top: 0;
     z-index: 1;
+}
 
-    transition: all .5s ease-in-out;
+.sticky-mobile {
+    z-index: 0;
 }
