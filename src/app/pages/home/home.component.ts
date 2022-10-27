@@ -18,15 +18,23 @@ export class HomeComponent implements OnInit {
   popularMovies: Item[] = [];
   topRatedMovies: Item[] = [];
   popularTvshows: Item[] = [];
+  loading: boolean = true;
 
 
-  constructor(private moviesService: MoviesService, private tvshowsService: TvshowsService) { }
+  constructor(private moviesService: MoviesService,
+              private tvshowsService: TvshowsService) { }
+              
 
-  ngOnInit(): void {
+   delay(ms: number) {
+      return new Promise( resolve => setTimeout(resolve, ms) );
+   }
+   
+   ngOnInit(): void {
       this.moviesService.getMovies('popular', numMovies)
          .subscribe( (movies) => {
+            this.delay(3000);
             this.popularMovies = movies.map((movie) => mapMovieToItem(movie));
-
+            this.loading = false;
             // console.log('popular', this.popularMovies);
          }, (error:any) => {
                console.log(error);
@@ -34,14 +42,18 @@ export class HomeComponent implements OnInit {
 
       this.moviesService.getMovies('top_rated', numMovies)
       .subscribe( (movies) => {
+         this.delay(3000);
          this.topRatedMovies = movies.map((movie) => mapMovieToItem(movie));
+         this.loading = false;
       }, (error:any) => {
       console.log(error);
       });
 
       this.moviesService.getMovies('upcoming', numMovies)
       .subscribe( (movies) => {
+         this.delay(3000);
          this.upcomingMovies = movies.map((movie) => mapMovieToItem(movie));
+         this.loading = false;
 
          // console.log('upcoming', this.popularMovies);
       }, (error:any) => {
@@ -50,14 +62,14 @@ export class HomeComponent implements OnInit {
 
       this.tvshowsService.getTvshows('popular', numMovies)
       .subscribe( (tvshows) => {
+         this.delay(3000);
          this.popularTvshows = tvshows.map((tvshow) => mapTvShowToItem(tvshow));
+         this.loading = false;
          console.log('debug', this.popularTvshows);
          
       }, (error:any) => {
       console.log(error);
       });
   }
-
-
 
 }

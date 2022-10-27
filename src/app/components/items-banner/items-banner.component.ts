@@ -12,14 +12,16 @@ export class ItemsBannerComponent implements OnInit {
 
   @Input() items: Item[] = [];
   @Input() title: string = "";
+  @Input() loading: boolean = true;
 
   ngOnInit() {
-    console.log(this.items);
+    // console.log(this.items);
   }
+  
 
   responsiveOptions = [
     {
-        breakpoint: '1024px',
+        breakpoint: '1250px',
         numVisible: 3,
         numScroll: 3
     },
@@ -29,7 +31,7 @@ export class ItemsBannerComponent implements OnInit {
         numScroll: 2
     },
     {
-        breakpoint: '560px',
+        breakpoint: '650px',
         numVisible: 1,
         numScroll: 1
     }

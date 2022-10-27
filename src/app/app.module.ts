@@ -25,6 +25,8 @@ import { InputTextModule } from 'primeng/inputtext';
 import { DialogModule } from 'primeng/dialog';
 import { TvshowsComponent } from './pages/tvshows/tvshows.component';
 import { TvshowDetailComponent } from './pages/tvshow-detail/tvshow-detail.component';
+import {SidebarModule} from 'primeng/sidebar';
+import {ButtonModule} from 'primeng/button';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,7 @@ import { TvshowDetailComponent } from './pages/tvshow-detail/tvshow-detail.compo
     VideoEmbedComponent,
     GenresComponent,
     TvshowsComponent,
-    TvshowDetailComponent
+    TvshowDetailComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,7 +56,9 @@ import { TvshowDetailComponent } from './pages/tvshow-detail/tvshow-detail.compo
     MessageModule,
     MessagesModule,
     InputTextModule,
-    DialogModule
+    DialogModule,
+    SidebarModule,
+    ButtonModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -16,7 +16,7 @@ export class TvshowsService {
   constructor(private http: HttpClient) { }
 
   getTvshows(type: string = 'latest', count: number = 6) {
-    console.log(`${this.baseUrl}/tv/${type}?api_key=${this.apiKey}`);
+    // console.log(`${this.baseUrl}/tv/${type}?api_key=${this.apiKey}`);
     
     return this.http.get<TvShowDTO>(`${this.baseUrl}/tv/${type}?api_key=${this.apiKey}`)
                     .pipe(switchMap( ( res ) => {

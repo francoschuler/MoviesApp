@@ -1,12 +1,31 @@
-<header>
+<header [ngClass]="{'sticky' : isSticky}">
     <nav class="navbar">
+
+        <i *ngIf="mobile.matches" class="ham-icon pi pi-bars" (click)="display = true" style=""></i>
         <a routerLink="/home" class="navbar-logo">
             <img src="./assets/images/logo.png" alt="logo">
             <h1> Movies<span>App</span> </h1>
         </a>
 
+        <p-sidebar [(visible)]="display">
 
-        <ul class="navbar-links" *ngIf="mobile.matches">
+            <a routerLink="/home" class="navbar-logo">
+                <img src="./assets/images/logo.png" alt="logo">
+                <h1> Movies<span>App</span> </h1>
+            </a>
+
+            <ul class="navbar-links-mobile" *ngIf="mobile.matches">
+                <li><a routerLink="/home">Home</a></li>
+                <li><a routerLink="/movies">Movies</a></li>
+                <li><a routerLink="/tvshows">TV Shows</a></li>
+                <li><a routerLink="/genres">Genres</a></li>
+            </ul>
+            
+        </p-sidebar>
+        
+
+
+        <ul class="navbar-links" *ngIf="!mobile.matches">
             <li><a routerLink="/home" routerLinkActive="active">Home</a></li>
             <li><a routerLink="/movies" routerLinkActive="active">Movies</a></li>
             <li><a routerLink="/tvshows" routerLinkActive="active">TV Shows</a></li>
@@ -15,11 +34,12 @@
 
     </nav>
 
-    <ul class="navbar-links-mobile" *ngIf="!mobile.matches">
+
+    <!-- <ul class="navbar-links-mobile" *ngIf="!mobile.matches">
         <li><a routerLink="/home">Home</a></li>
         <li><a routerLink="/movies">Movies</a></li>
         <li><a routerLink="/tvshows">TV Shows</a></li>
         <li><a routerLink="/genres">Genres</a></li>
-    </ul>
+    </ul> -->
 
 </header>
