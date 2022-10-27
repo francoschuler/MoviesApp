@@ -1,7 +1,7 @@
 <header [ngClass]="{'sticky' : isSticky}">
     <nav class="navbar">
 
-        <i *ngIf="mobile.matches" class="ham-icon pi pi-bars" (click)="display = true" style=""></i>
+        <i *ngIf="mobile.matches" class="ham-icon pi pi-bars" (click)="display = true"></i>
         <a routerLink="/home" class="navbar-logo">
             <img src="./assets/images/logo.png" alt="logo">
             <h1> Movies<span>App</span> </h1>
